@@ -1,0 +1,2 @@
+2013-04-11 16:10:09.2699|INFO|BtcAlarm.MvcApplication|Application Start
+2013-04-11 16:31:07.9117|INFO|BtcAlarm.MvcApplication|Application End
