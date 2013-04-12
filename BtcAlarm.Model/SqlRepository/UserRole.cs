@@ -18,7 +18,7 @@ namespace BtcAlarm.Model
 
         public bool CreateUserRole(UserRole instance)
         {
-            if (instance.ID == 0)
+            if (instance.Id == 0)
             {
                 Db.UserRoles.InsertOnSubmit(instance);
                 Db.UserRoles.Context.SubmitChanges();
@@ -30,10 +30,11 @@ namespace BtcAlarm.Model
 
         public bool UpdateUserRole(UserRole instance)
         {
-            UserRole cache = Db.UserRoles.Where(p => p.ID == instance.ID).FirstOrDefault();
+            UserRole cache = this.Db.UserRoles.FirstOrDefault(p => p.Id == instance.Id);
             if (cache != null)
             {
-                //TODO : Update fields for UserRole
+                cache.RoleId = instance.RoleId;
+                cache.UserId = instance.UserId;
                 Db.UserRoles.Context.SubmitChanges();
                 return true;
             }
@@ -43,7 +44,7 @@ namespace BtcAlarm.Model
 
         public bool RemoveUserRole(int idUserRole)
         {
-            UserRole instance = Db.UserRoles.Where(p => p.ID == idUserRole).FirstOrDefault();
+            UserRole instance = this.Db.UserRoles.FirstOrDefault(p => p.Id == idUserRole);
             if (instance != null)
             {
                 Db.UserRoles.DeleteOnSubmit(instance);

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace BtcAlarm.Model
 {
@@ -18,7 +14,7 @@ namespace BtcAlarm.Model
 
         public bool CreateRole(Role instance)
         {
-            if (instance.ID == 0)
+            if (instance.RoleId == 0)
             {
                 Db.Roles.InsertOnSubmit(instance);
                 Db.Roles.Context.SubmitChanges();
@@ -29,8 +25,8 @@ namespace BtcAlarm.Model
 
         public bool UpdateRole(Role instance)
         {
-            Role cache = Db.Roles.FirstOrDefault(p => p.ID == instance.ID);
-            if (instance.ID == 0)
+            Role cache = Db.Roles.FirstOrDefault(p => p.RoleId == instance.RoleId);
+            if (cache != null && instance.RoleId == 0)
             {
                 cache.Name = instance.Name;
                 cache.Code = instance.Code;
@@ -42,7 +38,7 @@ namespace BtcAlarm.Model
 
         public bool RemoveRole(int idRole)
         {
-            Role instance = Db.Roles.FirstOrDefault(p => p.ID == idRole);
+            Role instance = Db.Roles.FirstOrDefault(p => p.RoleId == idRole);
             if (instance != null)
             {
                 Db.Roles.DeleteOnSubmit(instance);

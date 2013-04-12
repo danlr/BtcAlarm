@@ -7,6 +7,8 @@ namespace BtcAlarm.App_Start
     using System.Configuration;
     using System.Web;
 
+    using BtcAlarm.Global.Auth;
+    using BtcAlarm.Mappers;
     using BtcAlarm.Model;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -56,8 +58,10 @@ namespace BtcAlarm.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<BtcAlarmDataContext>().ToMethod(c => new BtcAlarmDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString));
+            kernel.Bind<BtcAlertDbDataContext>().ToMethod(c => new BtcAlertDbDataContext(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString));
             kernel.Bind<IRepository>().To<SqlRepository>().InRequestScope();
+            kernel.Bind<IMapper>().To<CommonMapper>().InSingletonScope();
+            kernel.Bind<IAuthentication>().To<CustomAuthentication>().InRequestScope();
         }        
     }
 }

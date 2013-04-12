@@ -18,10 +18,11 @@ namespace BtcAlarm.Model
 
         public bool CreateUser(User instance)
         {
-            if (instance.ID == 0)
+            if (instance.UserId == 0)
             {
-                instance.AddedDate = DateTime.Now;
-                instance.ActivatedLink = User.GetActivateUrl();
+                instance.IsPaid = false;
+                instance.RegistrationDate = DateTime.UtcNow;
+                instance.Token = User.GetToken();
                 Db.Users.InsertOnSubmit(instance);
                 Db.Users.Context.SubmitChanges();
                 return true;
@@ -32,21 +33,23 @@ namespace BtcAlarm.Model
 
         public bool UpdateUser(User instance)
         {
-            User cache = Db.Users.Where(p => p.ID == instance.ID).FirstOrDefault();
+            User cache = this.Db.Users.FirstOrDefault(p => p.UserId == instance.UserId);
             if (cache != null)
             {
-                cache.Birthdate = instance.Birthdate;
-                cache.AvatarPath = instance.AvatarPath;
-                cache.Email = instance.Email;
+                cache.IsComplete = instance.IsComplete;
+                cache.IsPaid = instance.IsPaid;
+                cache.Password = instance.Password;
+                cache.ActivatedDate = instance.ActivatedDate;
+                cache.Name = instance.Name;
                 Db.Users.Context.SubmitChanges();
                 return true;
             }
             return false;
         }
 
-        public bool RemoveUser(int idUser)
+        public bool RemoveUser(int userId)
         {
-            User instance = Db.Users.Where(p => p.ID == idUser).FirstOrDefault();
+            User instance = this.Db.Users.FirstOrDefault(p => p.UserId == userId);
             if (instance != null)
             {
                 Db.Users.DeleteOnSubmit(instance);
@@ -59,12 +62,12 @@ namespace BtcAlarm.Model
 
         public User GetUser(string email)
         {
-            return Db.Users.FirstOrDefault(p => string.Compare(p.Email, email, true) == 0);
+            return Db.Users.FirstOrDefault(p => String.Compare(p.Email, email, StringComparison.OrdinalIgnoreCase) == 0);
         }
 
         public User Login(string email, string password)
         {
-            return Db.Users.FirstOrDefault(p => string.Compare(p.Email, email, true) == 0 && p.Password == password);
+            return Db.Users.FirstOrDefault(p => String.Compare(p.Email, email, StringComparison.OrdinalIgnoreCase) == 0 && p.Password == password);
         }
     }
 }

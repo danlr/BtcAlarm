@@ -1,0 +1,12 @@
+﻿@model BtcAlarm.Model.User
+
+@if (Model != null)
+{
+    <li>@Model.Email</li>
+    <li>@Html.ActionLink("Sign out", "Logout", "Login")</li>
+}
+else
+{
+    <li><span class="btn btn-link" id="LoginPopup">Sign in</span></li>
+    <li>@Html.ActionLink("Register", "Register", "User")</li>
+}

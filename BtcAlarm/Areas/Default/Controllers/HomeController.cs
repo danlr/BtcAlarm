@@ -1,5 +1,6 @@
 ﻿namespace BtcAlarm.Areas.Default.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using BtcAlarm.Controllers;
@@ -8,8 +9,13 @@
     {
         public ActionResult Index()
         {
-            return View();
+            var users = Repository.Users.ToList();
+            return View(users);
         }
 
+        public ActionResult UserLogin()
+        {
+            return View(CurrentUser);
+        }
     }
 }

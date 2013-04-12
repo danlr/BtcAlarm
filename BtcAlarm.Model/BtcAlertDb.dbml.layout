@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="BtcAlertDb">
+  <DataContextMoniker Name="/BtcAlertDbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9101f869-c76d-4820-a917-ae770e786d17" absoluteBounds="3.5, 0.875, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/BtcAlertDbDataContext/UserRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="901765ee-281c-43cf-a565-f6e3d5a1d685" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="258a6cb9-7750-4383-ad50-55dfa4521ee6" absoluteBounds="0.75, 0.875, 2, 1.3862939453124998">
+      <DataClassMoniker Name="/BtcAlertDbDataContext/Role" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2abc1f9d-0124-4834-9462-fd01a6f03cbe" absoluteBounds="0.765, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f3fb752-2936-416b-b25d-b75629ff0aa8" absoluteBounds="6.375, 0.875, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/BtcAlertDbDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="59904849-706a-483a-b238-a62ad6aa84c6" absoluteBounds="6.39, 1.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.56814697265625); (3.5 : 1.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BtcAlertDbDataContext/Role/Role_UserRole" />
+      <nodes>
+        <classShapeMoniker Id="258a6cb9-7750-4383-ad50-55dfa4521ee6" />
+        <classShapeMoniker Id="9101f869-c76d-4820-a917-ae770e786d17" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.375 : 1.56814697265625); (5.5 : 1.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/BtcAlertDbDataContext/User/User_UserRole" />
+      <nodes>
+        <classShapeMoniker Id="6f3fb752-2936-416b-b25d-b75629ff0aa8" />
+        <classShapeMoniker Id="9101f869-c76d-4820-a917-ae770e786d17" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

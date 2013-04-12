@@ -1,6 +1,25 @@
-﻿@{
+﻿@model IList<BtcAlarm.Model.User>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index 123</h2>
+<h2>Index</h2>
+
+
+<p>
+    @foreach (var user in Model)
+    {
+        <div class="item">
+            <span class="id">
+                @user.UserId
+            </span>
+            <span class="name">
+                @user.Name
+            </span>
+            <span class="Code">
+                @user.Email
+            </span>
+        </div>
+    }
+</p>

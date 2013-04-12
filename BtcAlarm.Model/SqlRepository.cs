@@ -11,6 +11,6 @@ namespace BtcAlarm.Model
     public partial class SqlRepository : IRepository
     {
         [Inject]
-        public BtcAlarmDataContext Db { get; set; }
+        public BtcAlertDbDataContext Db { get; set; }
     }
 }
