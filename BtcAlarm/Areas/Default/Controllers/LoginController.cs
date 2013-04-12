@@ -23,7 +23,8 @@
                 {
                     return this.RedirectToAction("Index", "Home");
                 }
-                this.ModelState["Password"].Errors.Add(" ");
+                this.ModelState["Password"].Errors.Add("*");
+                this.ModelState["Email"].Errors.Add("*");
             }
             return this.View(loginView);
         }
